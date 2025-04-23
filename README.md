@@ -4,8 +4,56 @@ Este repositório é o meu diário de estudos sobre Docker. Aqui registro os com
 
 ---
 
+## [Docker Hub](https://hub.docker.com/u/elguesabal)
+
+| Projeto | Código fonte | Repositório |
+| - | - | - |
+| ft_irc | [github.com/elguesabal/docker/ft_irc](https://github.com/elguesabal/docker/ft_irc) | [hub.docker.com/repository/docker/elguesabal/ft_irc](https://hub.docker.com/repository/docker/elguesabal/ft_irc/general) |
+
+---
+
 ## 📦 Comandos que já aprendi
 
+### docker container
+Lista containers em execução.
+```bash
+docker container ls
+```
+
+Lista todos os containers.
+```bash
+docker container ls -a
+```
+
+Cria e inicia um container.
+```bash
+docker container run <opções> <imagem>
+```
+
+Para um container.
+```bash
+docker container stop <nome_ou_id_do_container>
+```
+
+Remove um container.
+```bash
+docker container rm <nome_ou_id_do_container>
+```
+
+Mostra detalhes técnicos de um container.
+```bash
+docker container inspect <nome_ou_id_do_container>
+```
+
+Executa um comando dentro de um container.
+```bash
+docker container exec <nome_ou_id_do_container>
+```
+
+Remove todos os containers parados
+```bash
+docker container prune
+```
 
 ### docker status
 Verifica se o serviço do Docker está rodando.
@@ -186,43 +234,14 @@ Salva o estado atual do conteiner em uma nova imagem.
 docker commit <nome_ou_id_do_container> <nome_do_commit>
 ```
 
-### docker container
-Lista containers em execução.
+### docker build
+Cria uma imagem com base em um Dockerfile.
 ```bash
-docker container ls
+docker build -t <nome_da_imagem>:<tag> <caminho_do_contexto>
 ```
 
-Lista todos os containers.
+### docker push
+Sobe uma imagem pronta localmente, semelhante ao comando push do git.
 ```bash
-docker container ls -a
-```
-
-Cria e inicia um container.
-```bash
-docker container run <opções> <imagem>
-```
-
-Para um container.
-```bash
-docker container stop <nome_ou_id_do_container>
-```
-
-Remove um container.
-```bash
-docker container rm <nome_ou_id_do_container>
-```
-
-Mostra detalhes técnicos de um container.
-```bash
-docker container inspect <nome_ou_id_do_container>
-```
-
-Executa um comando dentro de um container.
-```bash
-docker container exec <nome_ou_id_do_container>
-```
-
-Remove todos os containers parados
-```bash
-docker container prune
+docker push <nome_da_imagem>:<tag>
 ```
