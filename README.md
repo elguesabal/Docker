@@ -8,7 +8,7 @@ Este repositório é o meu diário de estudos sobre Docker. Aqui registro os com
 
 | Projeto | Código fonte | Repositório |
 | - | - | - |
-| ft_irc | [github.com/elguesabal/docker/ft_irc](https://github.com/elguesabal/docker/ft_irc) | [hub.docker.com/repository/docker/elguesabal/ft_irc](https://hub.docker.com/repository/docker/elguesabal/ft_irc/general) |
+| ft_irc | [github.com/elguesabal/docker/ft_irc](https://github.com/elguesabal/Docker/tree/main/ft_irc) | [hub.docker.com/repository/docker/elguesabal/ft_irc](https://hub.docker.com/repository/docker/elguesabal/ft_irc/general) |
 
 ---
 
@@ -140,6 +140,41 @@ Com a flag "-e" é possível passar uma variável de ambiente.
 docker run -e VARIAVEL="vampeta" ubuntu
 ```
 
+Cria um armazenamento persistente fora do container.
+```bash
+docker run -v <diretorio> ubuntu
+```
+
+Cria um armazenamento persistente no host e outro no container usando os caminhos especificados.
+```bash
+docker run -v <diretório_do_host>:<diretório_do_container> ubuntu
+```
+
+Cria um volume ou usa o já existente e define o diretório do container.
+```bash
+docker run -v <nome_do_volume>:<diretório_do_container> ubuntu
+```
+
+Cria um armazenamento persistente no host e outro no container usando os caminhos especificados (a diferenca é que ocorre um erro se o diretório do host não existir).
+```bash
+docker run --mount type=bind,source=<diretório_do_host>,target=<diretório_do_container> ubuntu
+```
+
+Usa um volume já existente e caso não exista o docker cria um volume com esse nome.
+```bash
+docker run --mount source=<nome_do_volume>,target=<diretório_do_container> ubuntu
+```
+
+Cria um diretório dentro do container que qualquer coisa armazenada dentro da memória RAM, ou seja, ao parar o container os dados se perdem.
+```bash
+docker run --tmpfs=<diretório> ubuntu
+```
+
+Cria um diretório dentro do container que qualquer coisa armazenada dentro da memória RAM, ou seja, ao parar o container os dados se perdem.
+```bash
+docker run --mount type=tmpfs,destination=<diretório> ubuntu
+```
+
 ### docker ps
 Lista os containers em execução.
 ```bash
@@ -244,4 +279,20 @@ docker build -t <nome_da_imagem>:<tag> <caminho_do_contexto>
 Sobe uma imagem pronta localmente, semelhante ao comando push do git.
 ```bash
 docker push <nome_da_imagem>:<tag>
+```
+
+### docker volume
+Cria um volume de armazenamento.
+```bash
+docker volume create <nome_do_volume>
+```
+
+Lista todos os volumes.
+```bash
+docker volume ls
+```
+
+Remove um volume.
+```bash
+docker volume rm <nome_do_volume>
 ```
