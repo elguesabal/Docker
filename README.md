@@ -160,7 +160,7 @@ Cria um armazenamento persistente no host e outro no container usando os caminho
 docker run --mount type=bind,source=<diretório_do_host>,target=<diretório_do_container> ubuntu
 ```
 
-Usa um volume já existente e caso não exista o docker cria um volume com esse nome.
+Usa um volume já existente e caso não exista o Docker cria um volume com esse nome.
 ```bash
 docker run --mount source=<nome_do_volume>,target=<diretório_do_container> ubuntu
 ```
@@ -173,6 +173,11 @@ docker run --tmpfs=<diretório> ubuntu
 Cria um diretório dentro do container que qualquer coisa armazenada dentro da memória RAM, ou seja, ao parar o container os dados se perdem.
 ```bash
 docker run --mount type=tmpfs,destination=<diretório> ubuntu
+```
+
+Cria e conecta um container a uma rede brigde específica.
+```bash
+docker run --network <nome_da_rede> ubuntu
 ```
 
 ### docker ps
@@ -275,6 +280,16 @@ Cria uma imagem com base em um Dockerfile.
 docker build -t <nome_da_imagem>:<tag> <caminho_do_contexto>
 ```
 
+Faz o build de um projeto com arquivos .dockerfile.
+```bash
+docker build -t <nome_da_imagem>:<tag> -f <arquivo_dockerfile>.dockerfile .
+```
+
+Define um argumento no momento do build.
+```bash
+docker build -t <nome_da_imagem>:<tag> --build-arg <variável>=<valor> -f <arquivo_dockerfile>.dockerfile .
+```
+
 ### docker push
 Sobe uma imagem pronta localmente, semelhante ao comando push do git.
 ```bash
@@ -295,4 +310,36 @@ docker volume ls
 Remove um volume.
 ```bash
 docker volume rm <nome_do_volume>
+```
+
+### docker inspect
+Mostra informações sobre o container.
+```bash
+docker inspect <nome_do_container>
+```
+
+### docker network
+Lista todas as redes que existem no Docker.
+```bash
+docker network ls
+```
+
+Mostra com detalhes informações da rede bridge dos containers.
+```bash
+docker network inspect bridge
+```
+
+Cria uma rede brigde que fica visível a outros containers.
+```bash
+docker network create --driver brigde <nome_da_rede>
+```
+
+Desconecta o container de uma rede brigde.
+```bash
+docker network disconnect bridge <nome_do_container>
+```
+
+Conecta um container a uma rede brigde.
+```bash
+docker network connect <nome_da_rede> <nome_do_container>
 ```
