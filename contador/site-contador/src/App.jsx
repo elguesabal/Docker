@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const urlApi = import.meta.env.VITE_API;
+
 function App() {
 	const [count, setCount] = useState(0);
 
 	useEffect(() => {
-		fetch('http://localhost:4242/count')
+		fetch(`http://${urlApi}:4242/count`)
 		  .then(res => res.json())
 		  .then(data => setCount(data))
 		  .catch(err => console.error('Erro:', err));
 	}, []);
 
 	function api(increment) {
-		fetch('http://localhost:4242/count', {
+		fetch(`http://${urlApi}:4242/count`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
