@@ -6,10 +6,10 @@ Este repositório é o meu diário de estudos sobre Docker. Aqui registro os com
 
 ## [Docker Hub](https://hub.docker.com/u/elguesabal)
 
-| Projeto | Descrição | Código fonte GitHub | Repositório Docker Hub |
-| - | - | - | - |
-| ft_irc | A imagem roda um servidor IRC em C++. | [/elguesabal/docker/ft_irc](https://github.com/elguesabal/Docker/tree/main/ft_irc) | [elguesabal/ft_irc](https://hub.docker.com/repository/docker/elguesabal/ft_irc/general) |
-| contador | A API conta quantas vezes foi acessada a cada requisição. O site faz requisições para essa API e exibe o número de acessos. | [/elguesabal/docker/contador](https://github.com/elguesabal/Docker/tree/main/contador) | [elguesabal/api-contador](https://hub.docker.com/repository/docker/elguesabal/api-contador/general) <br> [site-contador](https://hub.docker.com/repository/docker/elguesabal/site-contador/general) |
+| Projeto | Descrição | Repositório Docker Hub |
+| - | - | - |
+| [ft_irc](https://github.com/elguesabal/Docker/tree/main/ft_irc) | A imagem roda um servidor IRC em C++. | [elguesabal/ft_irc](https://hub.docker.com/repository/docker/elguesabal/ft_irc/general) |
+| [contador](https://github.com/elguesabal/Docker/tree/main/contador) | A API conta quantas vezes foi acessada a cada requisição. O site faz requisições para essa API e exibe o número de acessos. | [elguesabal/api-contador](https://hub.docker.com/repository/docker/elguesabal/api-contador/general) <br> [elguesabal/site-contador](https://hub.docker.com/repository/docker/elguesabal/site-contador/general) |
 
 ---
 
