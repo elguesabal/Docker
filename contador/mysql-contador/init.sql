@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS count;
+
+USE count;
+
+CREATE TABLE IF NOT EXISTS count (
+    n INT
+);
+
+INSERT INTO count (n)
+VALUES (0);
