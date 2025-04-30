@@ -301,6 +301,12 @@ Define um argumento no momento do build.
 docker build -t <nome_da_imagem>:<tag> --build-arg <variável>=<valor> -f <arquivo_dockerfile>.dockerfile .
 ```
 
+### docker tag
+Atribui uma nova tag a uma imagem já existente.
+```bash
+docker tag <nome_da_imagem>:<tag> <nome_da_imagem>:latest
+```
+
 ### docker push
 Sobe uma imagem pronta localmente, semelhante ao comando push do git.
 ```bash
@@ -358,4 +364,35 @@ docker network disconnect bridge <nome_do_container>
 Conecta um container a uma rede brigde.
 ```bash
 docker network connect <nome_da_rede> <nome_do_container>
+```
+
+### docker compose
+Constrói e executa os containers conforme descrito no arquivo ```docker-compose.yml```.
+```bash
+docker compose up
+```
+
+Também pode ser usado a flag ```--build``` para forçar o build e ```-d``` para executar os containers em segundo plano.
+```bash
+docker compose up --build -d
+```
+
+Adicionando a flag ```--rm``` o container é excluido assim que sua execução terminar.
+```bash
+docker compose run --rm
+```
+
+Lista containers em execução, mostrando uma coluna extra com o nome do serviço.
+```bash
+docker compose ls
+```
+
+Para todos os containers sem remover.
+```bash
+docker compose stop
+```
+
+Para e remove todos os containers e redes criadas.
+```bash
+docker compose down
 ```

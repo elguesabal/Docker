@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 4242;
 
 app.use(express.json());
 app.use(cors());
@@ -16,9 +16,11 @@ const connection = mysql.createConnection({
 
 connection.connect((error) => {
 	if (error) {
-		console.log("Erro na conexao");
-		return;
+		console.error("Banco de dados não conectado. Reiniciando...");
+		process.exit(1);
 	}
+	console.log("Conectado ao banco de dados");
+	app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));
 });
 
 function getN() {
@@ -54,5 +56,3 @@ app.post("/count", async (req, res) => {
     if (n == null) res.send("Error");
     else res.send(n);
 });
-
-app.listen(port, () => console.log(`Servidor rodando em http://localhost:${port}`));

@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+
+  mysql-contador:
+    image: elguesabal/mysql-contador:1.0
+    container_name: mysql-contador
+    restart: always
+    build:
+      context: .
+      dockerfile: mysql-contador.dockerfile
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=vampeta
+    networks:
+      - rede-contador
+
+  api-contador:
+    image: elguesabal/api-contador:1.1
+    container_name: api-contador
+    restart: always
+    build:
+      context: .
+      dockerfile: api-contador.dockerfile
+    ports:
+      - 4242:4242
+    environment:
+      - PORT=4242
+    networks:
+      - rede-contador
+    depends_on:
+      - mysql-contador
+    command: node app.js
+
+  site-contador:
+    image: elguesabal/site-contador:1.0
+    container_name: site-contador
+    restart: always
+    build:
+      context: .
+      dockerfile: site-contador.dockerfile
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_API=localhost
+    command: npm run dev -- --host
+
+networks:
+  rede-contador:
+    driver: bridge
